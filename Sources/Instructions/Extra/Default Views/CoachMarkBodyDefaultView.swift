@@ -102,6 +102,7 @@ private extension CoachMarkBodyDefaultView {
         
         if let customColor = color {
             self.backgroundColor = customColor
+            self.layer.cornerRadius = 5
         }else {
             helper.configureBackground(self.views.backgroundImageView, addTo: self)
         }
