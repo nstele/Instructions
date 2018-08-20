@@ -30,7 +30,7 @@ class CoachMarkView: UIView {
 
     /// The body of the coach mark (likely to contain some text).
     let bodyView: CoachMarkBodyView
-
+    var skipLabel: UIButton = UIButton()
     /// The arrow view, note that the arrow view is not mandatory.
     private(set) var arrowView: CoachMarkArrowView?
 
@@ -131,17 +131,24 @@ class CoachMarkView: UIView {
     /// Layout the body view and the arrow view together.
     fileprivate func layoutViewComposition() {
         translatesAutoresizingMaskIntoConstraints = false
-
+        
         self.addSubview(bodyUIView)
+        skipLabel.setTitle("Skip", for: .normal)
+        self.addSubview(skipLabel)
         self.addConstraints(bodyUIView.makeConstraintToFillSuperviewHorizontally())
-
+        
+        self.addConstraint(NSLayoutConstraint(item: bodyUIView, attribute: .trailing, relatedBy: .equal, toItem: skipLabel, attribute: .trailing, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: bodyUIView, attribute: .leading, relatedBy: .equal, toItem: skipLabel, attribute: .leading, multiplier: 1, constant: 0))
+        
+        self.addConstraint(NSLayoutConstraint(item: bodyUIView, attribute: .bottom , relatedBy: .equal, toItem: skipLabel, attribute: .top, multiplier: 1, constant: 5.0))
         if let arrowUIView = arrowUIView, let arrowOrientation = self.arrowOrientation {
+            
             self.addSubview(arrowUIView)
-
+            
             innerConstraints.arrowXposition = coachMarkLayoutHelper.horizontalArrowConstraints(
                 for: (bodyView: bodyUIView, arrowView: arrowUIView), withPosition: .center,
                 horizontalOffset: 0)
-
+            
             self.addConstraint(innerConstraints.arrowXposition!)
             self.addConstraints(coachMarkLayoutHelper.verticalConstraints(
                 for: (bodyView: bodyUIView, arrowView: arrowUIView), in: self,
