@@ -140,7 +140,7 @@ class CoachMarkView: UIView {
         self.addConstraint(NSLayoutConstraint(item: bodyUIView, attribute: .trailing, relatedBy: .equal, toItem: skipLabel, attribute: .trailing, multiplier: 1, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: bodyUIView, attribute: .leading, relatedBy: .equal, toItem: skipLabel, attribute: .leading, multiplier: 1, constant: 0))
         
-        self.addConstraint(NSLayoutConstraint(item: bodyUIView, attribute: .bottom , relatedBy: .equal, toItem: skipLabel, attribute: .top, multiplier: 1, constant: 5.0))
+        self.addConstraint(NSLayoutConstraint(item: bodyUIView, attribute: .bottom , relatedBy: .equal, toItem: skipLabel, attribute: .top, multiplier: 1, constant: 0.0))
         if let arrowUIView = arrowUIView, let arrowOrientation = self.arrowOrientation {
             
             self.addSubview(arrowUIView)
