@@ -42,12 +42,12 @@ public class CoachMarkSkipDefaultView: UIButton, CoachMarkSkipView {
         titleLabel?.font = UIFont.systemFont(ofSize: 17.0)
         titleLabel?.textAlignment = .center
 
-        setBackgroundImage(UIImage(namedInInstructions: "background"), for: .normal)
+//        setBackgroundImage(UIImage(namedInInstructions: "background"), for: .normal)
+//
+//        setBackgroundImage(UIImage(namedInInstructions: "background-highlighted"),
+//                           for: .highlighted)
 
-        setBackgroundImage(UIImage(namedInInstructions: "background-highlighted"),
-                           for: .highlighted)
-
-        layer.cornerRadius = 4
+        //layer.cornerRadius = 4
         contentEdgeInsets = UIEdgeInsets(top: 10.0, left: 15.0, bottom: 10.0, right: 15.0)
         sizeToFit()
     }
