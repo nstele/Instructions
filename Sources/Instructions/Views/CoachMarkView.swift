@@ -134,7 +134,7 @@ class CoachMarkView: UIView {
         
         self.addSubview(bodyUIView)
         skipLabel.setTitle("Skip", for: .normal)
-        self.addSubview(skipLabel)
+      //  self.addSubview(skipLabel)
 //        self.addConstraint(NSLayoutConstraint(item: bodyUIView, attribute: .trailing, relatedBy: .equal, toItem: skipLabel, attribute: .trailing, multiplier: 1, constant: 0))
 //        self.addConstraint(NSLayoutConstraint(item: bodyUIView, attribute: .leading, relatedBy: .equal, toItem: skipLabel, attribute: .leading, multiplier: 1, constant: 0))
 //
