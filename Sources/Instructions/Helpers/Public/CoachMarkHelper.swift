@@ -52,7 +52,7 @@ public class CoachMarkHelper {
         }
 
         if let corners = roundedCorners {
-            view.layer.cornerRadius = roundedCorners!
+            view.layer.cornerRadius = corners
         }
         
         self.update(coachMark: &coachMark, usingView: view,
