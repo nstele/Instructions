@@ -52,11 +52,14 @@ public class CoachMarkHelper {
         }
 
         if let corners = roundedCorners {
-            view.layer.cornerRadius = corners
+            self.update(coachMark: &coachMark, usingView: view, roundedCorners: corners,
+                        pointOfInterest: pointOfInterest, cutoutPathMaker: cutoutPathMaker)
+        } else {
+            self.update(coachMark: &coachMark, usingView: view,
+                        pointOfInterest: pointOfInterest, cutoutPathMaker: cutoutPathMaker)
         }
         
-        self.update(coachMark: &coachMark, usingView: view,
-                    pointOfInterest: pointOfInterest, cutoutPathMaker: cutoutPathMaker)
+      
 
         return coachMark
     }
@@ -158,7 +161,7 @@ public class CoachMarkHelper {
     /// - Parameter pointOfInterest: the point of interest toward which the arrow should point
     /// - Parameter bezierPathBlock: a block customizing the cutoutPath
     internal func update(coachMark: inout CoachMark,
-                         usingView view: UIView? = nil, pointOfInterest: CGPoint?,
+                         usingView view: UIView? = nil, roundedCorners: CGFloat? = nil, pointOfInterest: CGPoint?,
                          cutoutPathMaker: CutoutPathMaker? = nil) {
         guard let view = view else { return }
 
@@ -169,9 +172,16 @@ public class CoachMarkHelper {
         if let makeCutoutPathWithFrame = cutoutPathMaker {
             bezierPath = makeCutoutPathWithFrame(convertedFrame)
         } else {
-            bezierPath = UIBezierPath(roundedRect: convertedFrame.insetBy(dx: -4, dy: -4),
-                                      byRoundingCorners: .allCorners,
-                                      cornerRadii: CGSize(width: 4, height: 4))
+            if let corners = roundedCorners {
+                bezierPath = UIBezierPath(roundedRect: convertedFrame.insetBy(dx: -corners, dy: -corners),
+                                          byRoundingCorners: .allCorners,
+                                          cornerRadii: CGSize(width: corners, height: corners))
+            } else {
+                bezierPath = UIBezierPath(roundedRect: convertedFrame.insetBy(dx: -4, dy: -4),
+                                          byRoundingCorners: .allCorners,
+                                          cornerRadii: CGSize(width: 4, height: 4))
+            }
+         
         }
 
         coachMark.cutoutPath = bezierPath
