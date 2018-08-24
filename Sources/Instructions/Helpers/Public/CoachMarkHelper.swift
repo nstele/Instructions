@@ -173,7 +173,7 @@ public class CoachMarkHelper {
             bezierPath = makeCutoutPathWithFrame(convertedFrame)
         } else {
             if let corners = roundedCorners {
-                bezierPath = UIBezierPath(roundedRect: convertedFrame.insetBy(dx: -4, dy: -4),
+                bezierPath = UIBezierPath(roundedRect: convertedFrame.insetBy(dx: -3, dy: -3),
                                           byRoundingCorners: .allCorners,
                                           cornerRadii: CGSize(width: corners, height: corners))
             } else {
