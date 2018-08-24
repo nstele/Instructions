@@ -43,7 +43,7 @@ public class CoachMarkHelper {
     /// - Parameter view: the view around which create the cutoutPath
     /// - Parameter pointOfInterest: the point of interest toward which the arrow should point
     /// - Parameter bezierPathBlock: a block customizing the cutoutPath
-    public func makeCoachMark(for view: UIView? = nil, pointOfInterest: CGPoint? = nil,
+    public func makeCoachMark(for view: UIView? = nil, roundedCorners: CGFloat? = nil, pointOfInterest: CGPoint? = nil,
                           cutoutPathMaker: CutoutPathMaker? = nil) -> CoachMark {
         var coachMark = CoachMark()
 
@@ -51,6 +51,10 @@ public class CoachMarkHelper {
             return coachMark
         }
 
+        if let corners = roundedCorners {
+            view.layer.cornerRadius = roundedCorners!
+        }
+        
         self.update(coachMark: &coachMark, usingView: view,
                     pointOfInterest: pointOfInterest, cutoutPathMaker: cutoutPathMaker)
 
